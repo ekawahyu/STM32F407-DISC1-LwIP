@@ -101,8 +101,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    MX_LWIP_Process();
+
     /* USER CODE BEGIN 3 */
+    MX_LWIP_Process();
   }
   /* USER CODE END 3 */
 }
