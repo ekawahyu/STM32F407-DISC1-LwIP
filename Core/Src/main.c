@@ -22,6 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "tcp_echoclient.h"
 #include "retarget.h"
 /* USER CODE END Includes */
 
@@ -66,7 +67,7 @@ static void MX_USART3_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  GPIO_PinState button_pressed = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -104,6 +105,18 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     MX_LWIP_Process();
+
+    button_pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+
+    if (button_pressed == GPIO_PIN_SET) {
+      HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+      tcp_echoclient_connect();
+      HAL_Delay(100);
+    }
+    else {
+      HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+    }
+
   }
   /* USER CODE END 3 */
 }

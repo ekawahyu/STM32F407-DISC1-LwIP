@@ -41,6 +41,7 @@ Core/Src/retarget.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 LWIP/App/lwip.c \
+LWIP/App/tcp_echoclient.c \
 LWIP/Target/ethernetif.c \
 Drivers/BSP/Components/dp83848/dp83848.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
