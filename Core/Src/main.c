@@ -22,6 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "tcp_echoserver.h"
 #include "retarget.h"
 /* USER CODE END Includes */
 
@@ -94,6 +95,7 @@ int main(void)
   setvbuf(stdin, NULL, _IONBF, 0);
   setvbuf(stdout, NULL, _IONBF, 0);
   setvbuf(stderr, NULL, _IONBF, 0);
+  tcp_echoserver_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
