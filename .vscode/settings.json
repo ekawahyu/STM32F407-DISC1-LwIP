@@ -1,0 +1,4 @@
+{
+    "cortex-debug.gdbPath.linux": "/usr/bin/gdb-multiarch",
+    "cortex-debug.gdbPath.osx": null,
+}
