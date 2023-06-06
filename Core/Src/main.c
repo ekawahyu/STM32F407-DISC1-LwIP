@@ -67,7 +67,7 @@ static void MX_USART3_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint32_t counter;
+  static uint32_t counter;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -95,6 +95,7 @@ int main(void)
   setvbuf(stdin, NULL, _IONBF, 0);
   setvbuf(stdout, NULL, _IONBF, 0);
   setvbuf(stderr, NULL, _IONBF, 0);
+  app_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -266,6 +266,11 @@ renode: all
 #######################################
 # build the application
 #######################################
+# app
+ifeq ($(APP), tcp_echoserver)
+C_SOURCES += LWIP/App/tcp_echoserver.c
+C_DEFS += -DAPP_TCP_ECHOSERVER
+endif
 # list of objects
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES)))
