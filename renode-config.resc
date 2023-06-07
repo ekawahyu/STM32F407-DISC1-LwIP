@@ -12,9 +12,6 @@ emulation CreateTap "tap0" "tap"
 connector Connect host.tap switch1
 connector Connect sysbus.ethernet switch1
 
-# Load symbols
-sysbus LoadELF $bin
-
 # Create a terminal window showing the output of USART3
 showAnalyzer sysbus.usart3
 
@@ -29,3 +26,11 @@ logLevel -1 sysbus.gpioPortD.LD6
 
 # Show noisy log on ethernet
 logLevel -1 sysbus.ethernet
+
+# Load symbols
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset
