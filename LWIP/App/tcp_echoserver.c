@@ -86,8 +86,8 @@ void tcp_echoserver_init(void)
   {
     err_t err;
     
-    /* bind echo_pcb to port 8000 (ECHO protocol) */
-    err = tcp_bind(tcp_echoserver_pcb, IP_ADDR_ANY, 8000);
+    /* bind echo_pcb to port 7 (ECHO protocol) */
+    err = tcp_bind(tcp_echoserver_pcb, IP_ADDR_ANY, 7);
     
     if (err == ERR_OK)
     {

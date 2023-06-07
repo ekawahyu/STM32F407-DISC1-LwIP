@@ -270,6 +270,9 @@ renode: all
 ifeq ($(APP), tcp_echoserver)
 C_SOURCES += LWIP/App/tcp_echoserver.c
 C_DEFS += -DAPP_TCP_ECHOSERVER
+else ifeq ($(APP), tcp_echoclient)
+C_SOURCES += LWIP/App/tcp_echoclient.c
+C_DEFS += -DAPP_TCP_ECHOCLIENT
 endif
 # list of objects
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))

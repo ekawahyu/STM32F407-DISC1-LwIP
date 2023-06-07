@@ -68,6 +68,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   static uint32_t counter;
+  GPIO_PinState button_pressed = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -106,6 +107,18 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     MX_LWIP_Process();
+
+    button_pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+
+    if (button_pressed == GPIO_PIN_SET) {
+      HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+      while(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin));
+      app_trigger();
+    }
+    else {
+      HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+    }
+
     HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
     printf("%s(%d,%lu)\n", __func__, __LINE__, counter++);
     HAL_Delay(100);

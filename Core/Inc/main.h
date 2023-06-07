@@ -31,8 +31,10 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#ifdef APP_TCP_ECHOSERVER
+#if defined APP_TCP_ECHOSERVER
 #include "tcp_echoserver.h"
+#elif defined APP_TCP_ECHOCLIENT
+#include "tcp_echoclient.h"
 #endif
 /* USER CODE END Includes */
 
@@ -48,10 +50,15 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#ifdef APP_TCP_ECHOSERVER
+#if defined APP_TCP_ECHOSERVER
 #define app_init(x) tcp_echoserver_init(x);
+#define app_trigger(x)
+#elif defined APP_TCP_ECHOCLIENT
+#define app_init(x)
+#define app_trigger(x) tcp_echoclient_connect();
 #else
 #define app_init(x)
+#define app_trigger(x)
 #endif
 /* USER CODE END EM */
 
