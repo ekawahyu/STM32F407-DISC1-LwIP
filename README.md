@@ -17,7 +17,7 @@ Currently the firmware build support macOS, Linux, and Windows. In case you want
 
 ## Getting Started
 
-### Installing
+### Firmware Build
 
 Download or clone this repository to any location. Cloning instruction is as follows:
 
@@ -31,17 +31,29 @@ Change into STM32F407-DISC1-LwIP directory and build the firmware. For example, 
 make APP=tcp_echoserver
 ```
 
-You are done! The binary will be available in `build` directory with the name of STM32F407-DISC1-LwIP.elf,bin,hex
+You are done! The binary will be available in `build` directory with the name of `STM32F407-DISC1-LwIP.elf,bin,hex`
 
 ## Deployment
 
 ### Actual STM32F4 Discovery
 
-TBD
+In Visual Studio Code, assuming that you have STM32F4 Discovery plugged into the computer, click `Run and Debug` on the left pane,  select Debug or Attach from the drop-down menu, and hit the green triangle icon to start debugging.
+
+### Prerequisite for Renode
+
+Please refer to this: https://github.com/renode/renode/issues/290
 
 ### Renode
 
-TBD
+Visual Studio Code Linux (and Windows WSL2):
+- Open terminal and run `sudo ./renode-dhcp-server-linux.sh`
+- Open terminal and run `make renode`
+- Go to `Run and Debug` pane, select `Debug Renode`
+
+Visual Studio Code macOS:
+- Open terminal and run `sudo make renode`
+- Open terminal and run `sudo ./renode-dhcp-server-macos.sh`
+- Go to `Run and Debug` pane, select `Debug Renode`
 
 ## Contributing
 
@@ -64,4 +76,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 We appreciate your opinion, both users and coders! When you made substantial contribution on this project, your name will show up here.
-
