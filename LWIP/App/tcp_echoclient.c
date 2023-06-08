@@ -109,10 +109,10 @@ static err_t tcp_echoclient_connected(void *arg, struct tcp_pcb *tpcb, err_t err
       es->state = ES_CONNECTED;
       es->pcb = tpcb;
       
-      sprintf((char*)data, "sending tcp client message %d\n", (int)message_count);
+      sprintf((char*)data, "sending tcp client message %d", (int)message_count);
 
       /* print out the message over console */
-      printf("%s", (char*)data);
+      printf("%s\n", (char*)data);
         
       /* allocate pbuf */
       es->p_tx = pbuf_alloc(PBUF_TRANSPORT, strlen((char*)data) , PBUF_POOL);
@@ -210,7 +210,8 @@ static err_t tcp_echoclient_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p
     tcp_recved(tpcb, p->tot_len);
 
     /* print out echo response over console */
-    snprintf((char*)data, p->len, "%s", (char*)p->payload);
+    memset (data, 0, 100);
+    snprintf((char*)data, p->len + 1, "%s", (char*)p->payload);
     printf("%s\n", (char*)data);
     
     pbuf_free(p);
