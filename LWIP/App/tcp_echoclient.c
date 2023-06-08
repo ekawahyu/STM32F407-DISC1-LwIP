@@ -75,17 +75,17 @@ static err_t tcp_echoclient_connected(void *arg, struct tcp_pcb *tpcb, err_t err
 */
 void tcp_echoclient_connect(void)
 {
-  ip_addr_t DestIPaddr;
+  ip_addr_t dest_addr;
   
   /* create new tcp pcb */
   tcp_echoclient_pcb = tcp_new();
   
   if (tcp_echoclient_pcb != NULL)
   {
-    IP4_ADDR( &DestIPaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3 );
+    IP4_ADDR( &dest_addr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3 );
     
     /* connect to destination address/port */
-    tcp_connect(tcp_echoclient_pcb,&DestIPaddr,DEST_PORT,tcp_echoclient_connected);
+    tcp_connect(tcp_echoclient_pcb,&dest_addr,DEST_PORT,tcp_echoclient_connected);
   }
 }
 
